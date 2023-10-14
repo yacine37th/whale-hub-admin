@@ -80,6 +80,7 @@ const Home = () => {
                             userIsAccepted: true,
                           }
                         );
+                        alert("The user has been accepted");
                         setusers(users.filter((user2) => user2 !== user));
                       } catch (error) {
                         console.log(error);
@@ -88,15 +89,13 @@ const Home = () => {
                       }
                     }}
                   >
-                    {
-                      loadingUpdate ?
+                    {loadingUpdate ? (
                       <div className="flex justify-center items-center h-full">
-                      <img src={spinner} alt="" className="w-4"/>
-                    </div>
-                      :
+                        <img src={spinner} alt="" className="w-14" />
+                      </div>
+                    ) : (
                       <p>Accept</p>
-                    }
-                    
+                    )}
                   </button>
                 </div>
               ))}
