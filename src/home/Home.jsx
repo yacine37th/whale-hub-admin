@@ -1,12 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { collection, getDocs, query } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDocs,
+  query,
+  updateDoc,
+  where,
+} from "firebase/firestore";
 import { db } from "../firebase/firebase";
 import spinner from "../assets/output-onlinegiftools.gif";
 
 const Home = () => {
   const [users, setusers] = useState([]);
   const [loading, setloading] = useState(false);
-  const q = query(collection(db, "users"));
+  const [loadingUpdate, setloadingUpdate] = useState(false);
+  const q = query(
+    collection(db, "users"),
+    where("userIsAccepted", "==", false)
+  );
 
   const userArray = [];
 
@@ -30,26 +41,67 @@ const Home = () => {
     }
   };
   useEffect(() => {
-    // return () => getdata();
     getdata();
   }, []);
 
   return (
     <div>
-      <div className="">
+      <div className="px-20 max-[768px]:px-10">
         {loading ? (
           <div className="flex justify-center items-center h-full">
             <img src={spinner} alt="" />
           </div>
         ) : (
-          <div className="flex flex-wrap">
-            {users?.map((user) => (
-              <div key={user.userID} className="m-4">
-                <p>{user.userName}</p>
-                <p>{user.userEmail}</p>
-              </div>
-            ))}
-          </div>
+          <>
+            <div className="text-3xl pt-4 flex justify-center max-[768px]:text-xl">
+              Number of users : {users?.length}
+            </div>
+
+            <div className="flex flex-wrap justify-center items-center">
+              {users?.map((user) => (
+                <div
+                  key={user.userID}
+                  className="m-4 border p-7 w-80 rounded-2xl"
+                >
+                  <p>{user.userName}</p>
+                  <p>{user.userEmail}</p>
+                  <p className="font-bold mb-10">
+                    Invested: {user.userInvested} $
+                  </p>
+                  <button
+                    className="w-full p-4 button-background-register border-white   text-white  text-base
+                  rounded-none  hover:border-white bg-blue-900"
+                    onClick={async () => {
+                      try {
+                        setloadingUpdate(true);
+                        await updateDoc(
+                          doc(collection(db, "users"), `${user.userID}`),
+                          {
+                            userIsAccepted: true,
+                          }
+                        );
+                        setusers(users.filter((user2) => user2 !== user));
+                      } catch (error) {
+                        console.log(error);
+                      } finally {
+                        setloadingUpdate(false);
+                      }
+                    }}
+                  >
+                    {
+                      loadingUpdate ?
+                      <div className="flex justify-center items-center h-full">
+                      <img src={spinner} alt="" className="w-4"/>
+                    </div>
+                      :
+                      <p>Accept</p>
+                    }
+                    
+                  </button>
+                </div>
+              ))}
+            </div>
+          </>
         )}
       </div>
     </div>
