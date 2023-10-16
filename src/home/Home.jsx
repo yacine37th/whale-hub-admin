@@ -9,7 +9,7 @@ import {
 } from "firebase/firestore";
 import { db } from "../firebase/firebase";
 import spinner from "../assets/output-onlinegiftools.gif";
-import UserCart from "../component/UserCart";
+import UserCart from "../components/UserCart";
 
 const Home = () => {
   const [users, setusers] = useState([]);
