@@ -10,6 +10,7 @@ import {
 import { db } from "../firebase/firebase";
 import spinner from "../assets/output-onlinegiftools.gif";
 import UserCart from "../components/UserCart";
+import Spinner from "../components/Spinner";
 
 const Home = () => {
   const [users, setusers] = useState([]);
@@ -49,10 +50,14 @@ const Home = () => {
     <div>
       <div className="px-20 max-[768px]:px-10">
         {loading ? (
-          <div className="flex justify-center items-center h-full flex-1">
-            <div>
-              <img src={spinner} alt="" />
-            </div>
+          <div
+            className="flex justify-center items-center   h-screen p-0
+          "
+          >
+            {/* <div class=" flex justify-center items-center">
+              <div class="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-900"></div>
+            </div> */}
+            <Spinner />
           </div>
         ) : (
           <>
