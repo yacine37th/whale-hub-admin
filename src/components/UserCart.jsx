@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import spinner from "../assets/output-onlinegiftools.gif";
 import { collection, doc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase/firebase";
+import LoadingSpinner from "./LoadingSpinner";
 
 function UserCart({ user, users, setusers }) {
   const [loadingUpdate, setloadingUpdate] = useState(false);
@@ -31,8 +32,17 @@ function UserCart({ user, users, setusers }) {
         }}
       >
         {loadingUpdate ? (
-          <div className="flex justify-center items-center h-full">
-            <img src={spinner} alt="" className="w-14" />
+          // <div className="flex justify-center items-center h-full">
+          //   <img src={spinner} alt="" className="w-14" />
+          // </div>
+          <div
+          // className="flex justify-center items-center   h-screen p-0
+          // "
+          >
+            {/* <div class=" flex justify-center items-center">
+              <div class="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-900"></div>
+            </div> */}
+            <LoadingSpinner width={"w-5"} height={"h-5"} text={"Loading ..."} />
           </div>
         ) : (
           <p>Accept</p>
