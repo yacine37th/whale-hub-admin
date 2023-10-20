@@ -8,7 +8,6 @@ import {
   where,
 } from "firebase/firestore";
 import { db } from "../firebase/firebase";
-import spinner from "../assets/output-onlinegiftools.gif";
 import UserCart from "../components/UserCart";
 import LoadingSpinner from "../components/LoadingSpinner";
 
@@ -38,6 +37,7 @@ const Home = () => {
       // console.log(userArray.length);
       console.log("====================================");
     } catch (error) {
+      console.log(error.message);
     } finally {
       setloading(false);
     }

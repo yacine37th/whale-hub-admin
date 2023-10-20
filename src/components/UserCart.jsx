@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import spinner from "../assets/output-onlinegiftools.gif";
 import { collection, doc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase/firebase";
 import LoadingSpinner from "./LoadingSpinner";
@@ -14,7 +13,9 @@ function UserCart({ user, users, setusers }) {
       <p className="font-bold mb-10">Invested: {user.userInvested} $</p>
       <button
         className="w-full p-4 button-background-register border-white   text-white  text-base
-    rounded-none  hover:border-white bg-blue-900"
+    rounded-none  hover:border-white bg-blue-900
+    
+    "
         onClick={async () => {
           try {
             setloadingUpdate(true);
