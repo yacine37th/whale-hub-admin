@@ -54,7 +54,7 @@ function AcceptedUsers() {
   };
 
   useEffect(() => {
-     getdata();
+    getdata();
   }, []);
   return (
     <>
