@@ -143,39 +143,37 @@ function GoldenPackUsers() {
             </div>
 
             <div className="flex flex-wrap justify-center items-center">
-              {
-              users.length === 0 ? (
+              {users.length === 0 ? (
                 <div className="flex justify-center items-center flex-1 w-1/2 h-1/2 mt-11">
                   <p className="text-3xl">NO USER ACCEPTED</p>
                 </div>
               ) : (
                 users
-                .filter((val) => {
-                  if (search === "") {
-                    return val;
-                  } else if (
-                    val.userEmail.toLowerCase().includes(search.toLowerCase())
-                  ) {
-                    return val;
-                  }
-                })
-                .map((user) => (
-                  <UserCartWithoutButton key={user.userID} user={user} />
-                  // <div
-                  //   className="m-4 border p-7 w-80 rounded-2xl"
-                  //   key={user.userID}
-                  // >
-                  //   <p>{user.userID}</p>
-                  //   <p>{user.userName}</p>
-                  //   <p>{user.userEmail}</p>
-                  //   <p className="font-bold mb-10">
-                  //     Invested: {user.userInvested} $
-                  //   </p>
+                  .filter((val) => {
+                    if (search === "") {
+                      return val;
+                    } else if (
+                      val.userEmail.toLowerCase().includes(search.toLowerCase())
+                    ) {
+                      return val;
+                    }
+                  })
+                  .map((user) => (
+                    <UserCartWithoutButton key={user.userID} user={user} />
+                    // <div
+                    //   className="m-4 border p-7 w-80 rounded-2xl"
+                    //   key={user.userID}
+                    // >
+                    //   <p>{user.userID}</p>
+                    //   <p>{user.userName}</p>
+                    //   <p>{user.userEmail}</p>
+                    //   <p className="font-bold mb-10">
+                    //     Invested: {user.userInvested} $
+                    //   </p>
 
-                  // </div>
-                ))
-              )
-              }
+                    // </div>
+                  ))
+              )}
             </div>
           </>
         )}
