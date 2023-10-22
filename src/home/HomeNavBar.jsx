@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/logo.png";
+import Navbar from "./NavBar";
 
 function HomeNavBar() {
   return (
@@ -15,7 +16,7 @@ function HomeNavBar() {
           <img src={logo} alt="" />
         </div>
 
-        <div className="flex  text-xl max-md:text-base">
+        <div className="flex  text-xl max-md:text-base max-md:hidden ">
           <NavLink
             to="/"
             className={`p-5  `}
@@ -44,7 +45,7 @@ function HomeNavBar() {
     
       </Link> */}
           <NavLink
-            to="/acceptedUsers"
+            to="/normalPackUsers"
             className={` p-5`}
             //   ${({ isActive, isPending }) =>
             //     isPending
@@ -61,11 +62,64 @@ function HomeNavBar() {
                     : "duration-700 border-b-0 transition ease-in-out hover:border-b"
                 }
               >
-                Accepted Users
+                Normal Pack
               </p>
             )}
           </NavLink>
+          <NavLink
+            to="/goldenPackUsers"
+            className={` p-5`}
+            //   ${({ isActive, isPending }) =>
+            //     isPending
+            //       ? "pending font-bold underline"
+            //       : isActive
+            //       ? "active   "
+            //       : "bg-black "}
+          >
+            {({ isActive, isPending }) => (
+              <p
+                className={
+                  isActive
+                    ? "duration-700 border-b-2 transition ease-in-out text-gray-500"
+                    : "duration-700 border-b-0 transition ease-in-out hover:border-b"
+                }
+              >
+                Golden Pack
+              </p>
+            )}
+          </NavLink>
+
+          <NavLink
+            to="/diamandPackUsers"
+            className={` p-5`}
+            //   ${({ isActive, isPending }) =>
+            //     isPending
+            //       ? "pending font-bold underline"
+            //       : isActive
+            //       ? "active   "
+            //       : "bg-black "}
+          >
+            {({ isActive, isPending }) => (
+              <p
+                className={
+                  isActive
+                    ? "duration-700 border-b-2 transition ease-in-out text-gray-500"
+                    : "duration-700 border-b-0 transition ease-in-out hover:border-b"
+                }
+              >
+                Diamand Pack
+              </p>
+            )}
+          </NavLink>
+
+
+        
+
+
+
+          
         </div>
+        <Navbar />
       </div>
     </div>
   );
