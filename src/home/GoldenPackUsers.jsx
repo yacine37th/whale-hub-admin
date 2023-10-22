@@ -15,14 +15,18 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import HomeNavBar from "./HomeNavBar";
 import UserCartWithoutButton from "../components/UserCartWithoutButton";
 
-function AcceptedUsers() {
+function GoldenPackUsers() {
   const [users, setusers] = useState([]);
   const [loading, setloading] = useState(false);
   const [search, setsearch] = useState("");
   const [amount, setAmount] = useState(0);
 
   const [totalin, settotalin] = useState(0);
-  const q = query(collection(db, "users"), where("userIsAccepted", "==", true));
+  const q = query(
+    collection(db, "users"),
+    where("userIsAccepted", "==", true),
+    where("userPack", "==", "GOLDEN PACK")
+  );
   const [loadingUpdate, setloadingUpdate] = useState(false);
 
   const userArray = [];
@@ -63,7 +67,7 @@ function AcceptedUsers() {
         {loading ? (
           <div
             className="flex justify-center items-center   h-screen p-0
-            "
+              "
           >
             <LoadingSpinner width={"w-16"} height={"h-16"} />
           </div>
@@ -88,7 +92,7 @@ function AcceptedUsers() {
               <p className="text-xl my-6">{amount.toFixed(2)} $</p>
               <button
                 className="w-1/4 max-md:w-1/2 p-4 button-background-register border-white   text-white  text-base
-                rounded-none  hover:border-white bg-blue-900"
+                  rounded-none  hover:border-white bg-blue-900"
                 onClick={async () => {
                   if (amount === 0) {
                     alert("Please fill the input with a valid Percentage");
@@ -124,8 +128,8 @@ function AcceptedUsers() {
                   // "
                   >
                     {/* <div class=" flex justify-center items-center">
-                    <div class="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-900"></div>
-                  </div> */}
+                      <div class="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-900"></div>
+                    </div> */}
                     <LoadingSpinner
                       width={"w-5"}
                       height={"h-5"}
@@ -172,4 +176,4 @@ function AcceptedUsers() {
   );
 }
 
-export default AcceptedUsers;
+export default GoldenPackUsers;
