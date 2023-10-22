@@ -76,7 +76,7 @@ function GoldenPackUsers() {
             <div className=" pt-4 flex  max-[768px]:text-xl flex-col items-center">
               <p className="text-3xl max-md:text-lg">
                 {" "}
-                Number of users Accepted : {users?.length}
+                Number of users Accepted GOLDEN PACK: {users?.length}
               </p>
               <p className="m-4 font-semibold text-3xl max-md:text-lg">
                 TOTAL INVESTED : {totalin.toFixed(2)} ${" "}
@@ -143,7 +143,13 @@ function GoldenPackUsers() {
             </div>
 
             <div className="flex flex-wrap justify-center items-center">
-              {users
+              {
+              users.length === 0 ? (
+                <div className="flex justify-center items-center flex-1 w-1/2 h-1/2 mt-11">
+                  <p className="text-3xl">NO USER ACCEPTED</p>
+                </div>
+              ) : (
+                users
                 .filter((val) => {
                   if (search === "") {
                     return val;
@@ -167,7 +173,9 @@ function GoldenPackUsers() {
                   //   </p>
 
                   // </div>
-                ))}
+                ))
+              )
+              }
             </div>
           </>
         )}
