@@ -8,7 +8,7 @@ function HomeNavBar() {
     <div className="w-full   bg-primary-color bg-blue-900   mb-5">
       <div
         className="flex items-center text-white justify-between   px-36
-        max-[768px]:px-8 z-50
+        max-md:px-8 z-50
         "
       >
         <div className="w-24 max-md:w-14">

@@ -19,8 +19,11 @@ function Navbar() {
             <FaIcons.FaBars onClick={showSidebar} color="#ffff" />
           </Link>
         </div>
-        <div className={`${sidebar ? "nav-menu active" : "nav-menu"} z-50`}>
-          <ul className="nav-menu-items" onClick={showSidebar}>
+        <div className={`${sidebar ? "nav-menu active" : "nav-menu"} z-50 `}>
+          <ul
+            className="nav-menu-items flex flex-col items-start justify-start"
+            onClick={showSidebar}
+          >
             <li className="navbar-toggle">
               <Link to="#" className="menu-bars">
                 <AiIcons.AiOutlineClose />
@@ -33,11 +36,11 @@ function Navbar() {
               // key={index} className={item.cName}
             >
               <Link
-                 to={"/"}
+                to={"/"}
                 className="text-white flex justify-center items-center px-8 py-5 w-full "
               >
                 <AiIcons.AiFillHome />
-                <span className="mr-5 ml-5">{t("home")}</span>
+                <span className="mx-4">Users</span>
               </Link>
             </li>
 
@@ -46,13 +49,12 @@ function Navbar() {
               // key={index} className={item.cName}
             >
               <Link
-                 to={"/category"}
-
+                to={"/normalPackUsers"}
                 //  to={item.path}
                 className="text-white flex justify-center items-center px-8 py-5 w-full"
               >
                 <AiIcons.AiFillCarryOut />
-                <span className="mr-5 ml-5 ">{t("categorie")}</span>
+                <span className="mx-4 ">Normal Pack</span>
               </Link>
             </li>
 
@@ -62,14 +64,29 @@ function Navbar() {
             >
               <Link
                 //  to={item.path}
-                to={"/bag"}
-
+                to={"/goldenPackUsers"}
                 className="text-white flex justify-center items-center px-8 py-5 w-full"
               >
                 <AiIcons.AiFillCarryOut />
-                <span className="mr-5 ml-5">{t("bag")}</span>
+                <span className="mx-4">Golden Pack</span>
               </Link>
             </li>
+
+
+            <li
+              className="text-white flex p-4"
+              // key={index} className={item.cName}
+            >
+              <Link
+                //  to={item.path}
+                to={"/diamandPackUsers"}
+                className="text-white flex justify-center items-center px-8 py-5 w-full"
+              >
+                <AiIcons.AiFillCarryOut />
+                <span className="mx-4 ">Diamand Pack</span>
+              </Link>
+            </li>
+            {/*  */}
             {/* <li key={index} className={item.cName}>
                   <Link to={item.path}>
                     {item.icon}
