@@ -8,6 +8,7 @@ function UserCart({ user, users, setusers }) {
 
   return (
     <div className="m-4 border p-7 w-80 rounded-2xl">
+      <p>{user.userPack}</p>
       <p>{user.userName}</p>
       <p>{user.userEmail}</p>
       <p className="font-bold mb-10">Invested: {user.userInvested} $</p>

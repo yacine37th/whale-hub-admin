@@ -48,7 +48,7 @@ function NormalPackUsers() {
       //   // console.log(userArray.length);
       //   console.log("====================================");
       //   console.log(total);
-      settotalin(total);
+      settotalin(total.toFixed(2));
       console.log((5 * total) / 100);
     } catch (error) {
       console.log(error.message);
@@ -79,7 +79,7 @@ function NormalPackUsers() {
                 Number of users Accepted NORMAL PACK: {users?.length}
               </p>
               <p className="m-4 font-semibold text-3xl max-md:text-lg">
-                TOTAL INVESTED : {totalin.toFixed(2)} ${" "}
+                TOTAL INVESTED : {totalin} ${" "}
               </p>
               <div className="w-1/2 max-md:w-full">
                 <input

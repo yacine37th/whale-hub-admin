@@ -24,7 +24,7 @@ function DiamandPackUsers() {
   const q = query(
     collection(db, "users"),
     where("userIsAccepted", "==", true),
-    where("userPack", "==", "DIAMOND PACK")
+    where("userPack", "==", "DIAMAND PACK")
   );
   const [loadingUpdate, setloadingUpdate] = useState(false);
 
@@ -57,7 +57,7 @@ function DiamandPackUsers() {
   };
 
   useEffect(() => {
-    return () => getdata();
+    getdata();
   }, []);
   return (
     <>
