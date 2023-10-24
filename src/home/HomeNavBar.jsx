@@ -12,7 +12,6 @@ function HomeNavBar() {
         "
       >
         <div className="w-24 max-md:w-14">
-          {/* <h1 className="bg-red text-3xl">Rahma</h1> */}
           <img src={logo} alt="" />
         </div>
 

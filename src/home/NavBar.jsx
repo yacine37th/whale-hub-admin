@@ -29,12 +29,7 @@ function Navbar() {
                 <AiIcons.AiOutlineClose />
               </Link>
             </li>
-            {/* {SidebarData.map((item, index) => {
-              return ( */}
-            <li
-              className="text-white flex p-4"
-              // key={index} className={item.cName}
-            >
+            <li className="text-white flex p-4">
               <Link
                 to={"/"}
                 className="text-white flex justify-center items-center px-8 py-5 w-full "
@@ -44,26 +39,17 @@ function Navbar() {
               </Link>
             </li>
 
-            <li
-              className="text-white flex p-4"
-              // key={index} className={item.cName}
-            >
+            <li className="text-white flex p-4">
               <Link
                 to={"/normalPackUsers"}
-                //  to={item.path}
                 className="text-white flex justify-center items-center px-8 py-5 w-full"
               >
                 <AiIcons.AiFillCarryOut />
                 <span className="mx-4 ">Normal Pack</span>
               </Link>
             </li>
-
-            <li
-              className="text-white flex p-4"
-              // key={index} className={item.cName}
-            >
+            <li className="text-white flex p-4">
               <Link
-                //  to={item.path}
                 to={"/goldenPackUsers"}
                 className="text-white flex justify-center items-center px-8 py-5 w-full"
               >
@@ -71,14 +57,8 @@ function Navbar() {
                 <span className="mx-4">Golden Pack</span>
               </Link>
             </li>
-
-
-            <li
-              className="text-white flex p-4"
-              // key={index} className={item.cName}
-            >
+            <li className="text-white flex p-4">
               <Link
-                //  to={item.path}
                 to={"/diamandPackUsers"}
                 className="text-white flex justify-center items-center px-8 py-5 w-full"
               >
@@ -86,21 +66,6 @@ function Navbar() {
                 <span className="mx-4 ">Diamand Pack</span>
               </Link>
             </li>
-            {/*  */}
-            {/* <li key={index} className={item.cName}>
-                  <Link to={item.path}>
-                    {item.icon}
-                    <span>{item.title}</span>
-                  </Link>
-                </li>
-                <li key={index} className={item.cName}>
-                  <Link to={item.path}>
-                    {item.icon}
-                    <span>{item.title}</span>
-                  </Link>
-                </li> */}
-            {/* ); */}
-            {/* })} */}
           </ul>
         </div>
       </IconContext.Provider>
