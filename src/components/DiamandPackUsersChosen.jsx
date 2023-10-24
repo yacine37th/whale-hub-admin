@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 function DiamandPackUsersChosen({ user, setselectedUsers, selectedUsers }) {
-  const [loadingUpdate, setloadingUpdate] = useState(false);
   return (
     <div className="m-4 border p-7 w-80 rounded-2xl" key={user.userID}>
       <div className="flex-1 flex justify-end p-4">
