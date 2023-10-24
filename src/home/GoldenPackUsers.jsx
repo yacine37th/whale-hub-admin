@@ -14,9 +14,11 @@ import UserCart from "../components/UserCart";
 import LoadingSpinner from "../components/LoadingSpinner";
 import HomeNavBar from "./HomeNavBar";
 import UserCartWithoutButton from "../components/UserCartWithoutButton";
+import GoldPackUsersChosen from "../components/GoldPackUsersChosen";
 
 function GoldenPackUsers() {
   const [users, setusers] = useState([]);
+  const [selectedUsers, setselectedUsers] = useState([]);
   const [loading, setloading] = useState(false);
   const [search, setsearch] = useState("");
   const [amount, setAmount] = useState(0);
@@ -49,7 +51,6 @@ function GoldenPackUsers() {
       //   console.log("====================================");
       //   console.log(total);
       settotalin(total);
-      console.log((5 * total) / 100);
     } catch (error) {
       console.log(error.message);
     } finally {
@@ -94,12 +95,14 @@ function GoldenPackUsers() {
                 className="w-1/4 max-md:w-1/2 p-4 button-background-register border-white   text-white  text-base
                   rounded-none  hover:border-white bg-blue-900"
                 onClick={async () => {
-                  if (amount === 0) {
-                    alert("Please fill the input with a valid Percentage");
+                  if (amount === 0 || selectedUsers.length === 0) {
+                    alert(
+                      "Please fill the input with a valid Percentage and select the users"
+                    );
                   } else {
                     try {
                       setloadingUpdate(true);
-                      users.forEach(async (user) => {
+                      selectedUsers.forEach(async (user) => {
                         await updateDoc(
                           doc(collection(db, "users"), `${user.userID}`),
                           {
@@ -109,7 +112,7 @@ function GoldenPackUsers() {
                           }
                         );
                       });
-                      alert("");
+                      alert("Success");
                     } catch (error) {
                       console.log(error);
                       alert("Error happened , please try again");
@@ -159,19 +162,12 @@ function GoldenPackUsers() {
                     }
                   })
                   .map((user) => (
-                    <UserCartWithoutButton key={user.userID} user={user} />
-                    // <div
-                    //   className="m-4 border p-7 w-80 rounded-2xl"
-                    //   key={user.userID}
-                    // >
-                    //   <p>{user.userID}</p>
-                    //   <p>{user.userName}</p>
-                    //   <p>{user.userEmail}</p>
-                    //   <p className="font-bold mb-10">
-                    //     Invested: {user.userInvested} $
-                    //   </p>
-
-                    // </div>
+                    <GoldPackUsersChosen
+                      key={user.userID}
+                      user={user}
+                      setselectedUsers={setselectedUsers}
+                      selectedUsers={selectedUsers}
+                    />
                   ))
               )}
             </div>

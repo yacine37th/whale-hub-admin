@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function DiamandPackUsersChosen({ user, setselectedUsers, selectedUsers }) {
+function GoldPackUsersChosen({ user, setselectedUsers, selectedUsers }) {
   return (
     <div className="m-4 border p-7 w-80 rounded-2xl" key={user.userID}>
       <div className="flex-1 flex justify-end p-4">
@@ -30,4 +30,4 @@ function DiamandPackUsersChosen({ user, setselectedUsers, selectedUsers }) {
   );
 }
 
-export default DiamandPackUsersChosen;
+export default GoldPackUsersChosen;

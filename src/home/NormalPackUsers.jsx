@@ -109,7 +109,7 @@ function NormalPackUsers() {
                           }
                         );
                       });
-                      alert("");
+                      alert("Success");
                     } catch (error) {
                       console.log(error);
                       alert("Error happened , please try again");
