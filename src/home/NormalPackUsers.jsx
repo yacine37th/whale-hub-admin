@@ -19,6 +19,7 @@ import GoldPackUsersChosen from "../components/GoldPackUsersChosen";
 function NormalPackUsers() {
   const [users, setusers] = useState([]);
   const [selectedUsers, setselectedUsers] = useState([]);
+  const [selectedUsersToWithdraw, setselectedUsersToWithdraw] = useState([]);
   const [loading, setloading] = useState(false);
   const [search, setsearch] = useState("");
   const [amount, setAmount] = useState(0);
@@ -42,7 +43,7 @@ function NormalPackUsers() {
         if (!userArray.includes(doc.data())) {
           userArray.push(doc.data());
         }
-        total = total +Number(doc.data().userInvested);
+        total = total + Number(doc.data().userInvested);
       });
       setusers(userArray);
       //   console.log("====================================");
@@ -108,9 +109,7 @@ function NormalPackUsers() {
                             userEarnedTotal: arrayUnion(
                               Number(amount.toFixed(2))
                             ),
-                            userInvested: arrayUnion(
-                              Number(amount.toFixed(2))
-                            ),
+                            userInvested: arrayUnion(Number(amount.toFixed(2))),
                           }
                         );
                       });
@@ -170,6 +169,8 @@ function NormalPackUsers() {
                       user={user}
                       setselectedUsers={setselectedUsers}
                       selectedUsers={selectedUsers}
+                      setselectedUsersToWithdraw={setselectedUsersToWithdraw}
+                      selectedUsersToWithdraw={selectedUsersToWithdraw}
                     />
                   ))
               )}

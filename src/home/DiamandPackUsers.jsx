@@ -39,7 +39,7 @@ function DiamandPackUsers() {
         if (!userArray.includes(doc.data())) {
           userArray.push(doc.data());
         }
-        total = total +Number(doc.data().userInvested);
+        total = total + Number(doc.data().userInvested);
       });
       setusers(userArray);
       //   console.log("====================================");
@@ -105,9 +105,7 @@ function DiamandPackUsers() {
                             userEarnedTotal: arrayUnion(
                               Number(amount.toFixed(2))
                             ),
-                            userInvested: arrayUnion(
-                              Number(amount.toFixed(2))
-                            ),
+                            userInvested: arrayUnion(Number(amount.toFixed(2))),
                           }
                         );
                       });
