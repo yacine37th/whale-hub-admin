@@ -23,6 +23,8 @@ function NormalPackUsers() {
   const [loading, setloading] = useState(false);
   const [search, setsearch] = useState("");
   const [amount, setAmount] = useState(0);
+  const [withdrewPercentage, setwithdrewPercentage] = useState(0);
+
 
   const [totalin, settotalin] = useState(0);
   const q = query(
@@ -31,6 +33,8 @@ function NormalPackUsers() {
     where("userPack", "==", "NORMAL PACK")
   );
   const [loadingUpdate, setloadingUpdate] = useState(false);
+  const [loadingUpdate2, setloadingUpdate2] = useState(false);
+
 
   const userArray = [];
   var total = 0;
@@ -134,6 +138,76 @@ function NormalPackUsers() {
                     {/* <div class=" flex justify-center items-center">
                     <div class="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-900"></div>
                   </div> */}
+                    <LoadingSpinner
+                      width={"w-5"}
+                      height={"h-5"}
+                      text={"Confirmation ..."}
+                    />
+                  </div>
+                ) : (
+                  <p>Confirm</p>
+                )}
+              </button>
+
+                {/* 
+             
+             //WITHDERW ////////////////////
+             
+             
+             */}
+              <div className="w-1/2 max-md:w-full mt-14">
+                <input
+                  type="number"
+                  onChange={(e) => setwithdrewPercentage((e.target.value * totalin) / 100)}
+                  className="border p-5 outline-none w-full"
+                  placeholder="Percentage WITHDREW ..."
+                />
+              </div>
+              <p className="text-xl my-6">{withdrewPercentage.toFixed(2)} $</p>
+              <button
+                className="w-1/4 max-md:w-1/2 p-4 button-background-register border-white   text-white  text-base
+                  rounded-none  hover:border-white bg-blue-900"
+                onClick={async () => {
+                  if (withdrewPercentage === 0 || selectedUsersToWithdraw.length === 0) {
+                    alert(
+                      "Please fill the input with a valid Percentage and select the users"
+                    );
+                  } else {
+                    console.log(selectedUsersToWithdraw);
+                    // try {
+                    //   setloadingUpdate22(true);
+                    //   selectedUsersToWithdraw.forEach(async (user) => {
+                    //     await updateDoc(
+                    //       doc(collection(db, "users"), `${user.userID}`),
+                    //       {
+                    //         userEarnedTotal: arrayUnion(
+                    //           Number(amount.toFixed(2))
+                    //         ),
+                    //         userInvested: arrayUnion(Number(amount.toFixed(2))),
+                    //       }
+                    //     );
+                    //   });
+                    //   alert("Success");
+                    // } catch (error) {
+                    //   console.log(error);
+                    //   alert("Error happened , please try again");
+                    // } finally {
+                    //   setloadingUpdate2(false);
+                    // }
+                  }
+                }}
+              >
+                {loadingUpdate2 ? (
+                  // <div className="flex justify-center items-center h-full">
+                  //   <img src={spinner} alt="" className="w-14" />
+                  // </div>
+                  <div
+                  // className="flex justify-center items-center   h-screen p-0
+                  // "
+                  >
+                    {/* <div class=" flex justify-center items-center">
+                      <div class="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-900"></div>
+                    </div> */}
                     <LoadingSpinner
                       width={"w-5"}
                       height={"h-5"}

@@ -175,8 +175,8 @@ function GoldenPackUsers() {
                   } else {
                     console.log(selectedUsersToWithdraw);
                     // try {
-                    //   setloadingUpdate(true);
-                    //   selectedUsers.forEach(async (user) => {
+                    //   setloadingUpdate2(true);
+                    //   selectedUsersToWithdraw.forEach(async (user) => {
                     //     await updateDoc(
                     //       doc(collection(db, "users"), `${user.userID}`),
                     //       {
@@ -192,12 +192,12 @@ function GoldenPackUsers() {
                     //   console.log(error);
                     //   alert("Error happened , please try again");
                     // } finally {
-                    //   setloadingUpdate(false);
+                    //   setloadingUpdate2(false);
                     // }
                   }
                 }}
               >
-                {loadingUpdate ? (
+                {loadingUpdate2 ? (
                   // <div className="flex justify-center items-center h-full">
                   //   <img src={spinner} alt="" className="w-14" />
                   // </div>
