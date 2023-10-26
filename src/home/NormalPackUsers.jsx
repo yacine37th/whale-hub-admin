@@ -25,7 +25,6 @@ function NormalPackUsers() {
   const [amount, setAmount] = useState(0);
   const [withdrewPercentage, setwithdrewPercentage] = useState(0);
 
-
   const [totalin, settotalin] = useState(0);
   const q = query(
     collection(db, "users"),
@@ -34,7 +33,6 @@ function NormalPackUsers() {
   );
   const [loadingUpdate, setloadingUpdate] = useState(false);
   const [loadingUpdate2, setloadingUpdate2] = useState(false);
-
 
   const userArray = [];
   var total = 0;
@@ -149,7 +147,7 @@ function NormalPackUsers() {
                 )}
               </button>
 
-                {/* 
+              {/* 
              
              //WITHDERW ////////////////////
              
@@ -158,7 +156,9 @@ function NormalPackUsers() {
               <div className="w-1/2 max-md:w-full mt-14">
                 <input
                   type="number"
-                  onChange={(e) => setwithdrewPercentage((e.target.value * totalin) / 100)}
+                  onChange={(e) =>
+                    setwithdrewPercentage((e.target.value * totalin) / 100)
+                  }
                   className="border p-5 outline-none w-full"
                   placeholder="Percentage WITHDREW ..."
                 />
@@ -168,7 +168,10 @@ function NormalPackUsers() {
                 className="w-1/4 max-md:w-1/2 p-4 button-background-register border-white   text-white  text-base
                   rounded-none  hover:border-white bg-blue-900"
                 onClick={async () => {
-                  if (withdrewPercentage === 0 || selectedUsersToWithdraw.length === 0) {
+                  if (
+                    withdrewPercentage === 0 ||
+                    selectedUsersToWithdraw.length === 0
+                  ) {
                     alert(
                       "Please fill the input with a valid Percentage and select the users"
                     );
@@ -198,16 +201,7 @@ function NormalPackUsers() {
                 }}
               >
                 {loadingUpdate2 ? (
-                  // <div className="flex justify-center items-center h-full">
-                  //   <img src={spinner} alt="" className="w-14" />
-                  // </div>
-                  <div
-                  // className="flex justify-center items-center   h-screen p-0
-                  // "
-                  >
-                    {/* <div class=" flex justify-center items-center">
-                      <div class="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-900"></div>
-                    </div> */}
+                  <div>
                     <LoadingSpinner
                       width={"w-5"}
                       height={"h-5"}
