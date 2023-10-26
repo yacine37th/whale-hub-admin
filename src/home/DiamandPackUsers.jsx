@@ -39,7 +39,7 @@ function DiamandPackUsers() {
         if (!userArray.includes(doc.data())) {
           userArray.push(doc.data());
         }
-        total = total + doc.data().userInvested;
+        total = total +Number(doc.data().userInvested);
       });
       setusers(userArray);
       //   console.log("====================================");
@@ -47,7 +47,7 @@ function DiamandPackUsers() {
       //   // console.log(userArray.length);
       //   console.log("====================================");
       //   console.log(total);
-      settotalin(total);
+      settotalin(total.toFixed(2));
       // console.log((5 * total) / 100);
     } catch (error) {
       console.log(error.message);
@@ -78,7 +78,7 @@ function DiamandPackUsers() {
                 Number of users Accepted DIAMAND PACK : {users?.length}
               </p>
               <p className="m-4 font-semibold text-3xl max-md:text-lg">
-                TOTAL INVESTED : {totalin.toFixed(2)} ${" "}
+                TOTAL INVESTED : {totalin} ${" "}
               </p>
               <div className="w-1/2 max-md:w-full">
                 <input
@@ -88,7 +88,7 @@ function DiamandPackUsers() {
                   placeholder="Percentage% ..."
                 />
               </div>
-              <p className="text-xl my-6">{amount.toFixed(2)} $</p>
+              <p className="text-xl my-6">{amount} $</p>
               <button
                 className="w-1/4 max-md:w-1/2 p-4 button-background-register border-white   text-white  text-base
                   rounded-none  hover:border-white bg-blue-900"
@@ -103,6 +103,9 @@ function DiamandPackUsers() {
                           doc(collection(db, "users"), `${user.userID}`),
                           {
                             userEarnedTotal: arrayUnion(
+                              Number(amount.toFixed(2))
+                            ),
+                            userInvested: arrayUnion(
                               Number(amount.toFixed(2))
                             ),
                           }

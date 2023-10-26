@@ -14,9 +14,11 @@ import UserCart from "../components/UserCart";
 import LoadingSpinner from "../components/LoadingSpinner";
 import HomeNavBar from "./HomeNavBar";
 import UserCartWithoutButton from "../components/UserCartWithoutButton";
+import GoldPackUsersChosen from "../components/GoldPackUsersChosen";
 
 function NormalPackUsers() {
   const [users, setusers] = useState([]);
+  const [selectedUsers, setselectedUsers] = useState([]);
   const [loading, setloading] = useState(false);
   const [search, setsearch] = useState("");
   const [amount, setAmount] = useState(0);
@@ -40,7 +42,7 @@ function NormalPackUsers() {
         if (!userArray.includes(doc.data())) {
           userArray.push(doc.data());
         }
-        total = total + doc.data().userInvested;
+        total = total +Number(doc.data().userInvested);
       });
       setusers(userArray);
       //   console.log("====================================");
@@ -106,6 +108,9 @@ function NormalPackUsers() {
                             userEarnedTotal: arrayUnion(
                               Number(amount.toFixed(2))
                             ),
+                            userInvested: arrayUnion(
+                              Number(amount.toFixed(2))
+                            ),
                           }
                         );
                       });
@@ -159,7 +164,13 @@ function NormalPackUsers() {
                     }
                   })
                   .map((user) => (
-                    <UserCartWithoutButton key={user.userID} user={user} />
+                    // <UserCartWithoutButton key={user.userID} user={user} />
+                    <GoldPackUsersChosen
+                      key={user.userID}
+                      user={user}
+                      setselectedUsers={setselectedUsers}
+                      selectedUsers={selectedUsers}
+                    />
                   ))
               )}
             </div>

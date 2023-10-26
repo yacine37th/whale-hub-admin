@@ -42,15 +42,15 @@ function GoldenPackUsers() {
         if (!userArray.includes(doc.data())) {
           userArray.push(doc.data());
         }
-        total = total + doc.data().userInvested;
+        total = total + Number(doc.data().userInvested);
       });
       setusers(userArray);
       //   console.log("====================================");
       //   console.log(users);
       //   // console.log(userArray.length);
       //   console.log("====================================");
-      //   console.log(total);
-      settotalin(total);
+        console.log(total);
+      settotalin(total.toFixed(2));
     } catch (error) {
       console.log(error.message);
     } finally {
@@ -80,7 +80,7 @@ function GoldenPackUsers() {
                 Number of users Accepted GOLDEN PACK: {users?.length}
               </p>
               <p className="m-4 font-semibold text-3xl max-md:text-lg">
-                TOTAL INVESTED : {totalin.toFixed(2)} ${" "}
+                TOTAL INVESTED : {totalin} ${" "}
               </p>
               <div className="w-1/2 max-md:w-full">
                 <input
@@ -107,6 +107,9 @@ function GoldenPackUsers() {
                           doc(collection(db, "users"), `${user.userID}`),
                           {
                             userEarnedTotal: arrayUnion(
+                              Number(amount.toFixed(2))
+                            ),
+                            userInvested: arrayUnion(
                               Number(amount.toFixed(2))
                             ),
                           }
