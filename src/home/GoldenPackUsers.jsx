@@ -181,9 +181,9 @@ function GoldenPackUsers() {
                     //       doc(collection(db, "users"), `${user.userID}`),
                     //       {
                     //         userEarnedTotal: arrayUnion(
-                    //           Number(amount.toFixed(2))
+                    //           Number(-withdrewPercentage.toFixed(2))
                     //         ),
-                    //         userInvested: arrayUnion(Number(amount.toFixed(2))),
+                    //         userInvested: arrayUnion(Number(-withdrewPercentage.toFixed(2))),
                     //       }
                     //     );
                     //   });
