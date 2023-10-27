@@ -174,26 +174,26 @@ function GoldenPackUsers() {
                     );
                   } else {
                     console.log(selectedUsersToWithdraw);
-                    // try {
-                    //   setloadingUpdate2(true);
-                    //   selectedUsersToWithdraw.forEach(async (user) => {
-                    //     await updateDoc(
-                    //       doc(collection(db, "users"), `${user.userID}`),
-                    //       {
-                    //         userEarnedTotal: arrayUnion(
-                    //           Number(-withdrewPercentage.toFixed(2))
-                    //         ),
-                    //         userInvested: arrayUnion(Number(-withdrewPercentage.toFixed(2))),
-                    //       }
-                    //     );
-                    //   });
-                    //   alert("Success");
-                    // } catch (error) {
-                    //   console.log(error);
-                    //   alert("Error happened , please try again");
-                    // } finally {
-                    //   setloadingUpdate2(false);
-                    // }
+                    try {
+                      setloadingUpdate2(true);
+                      selectedUsersToWithdraw.forEach(async (user) => {
+                        await updateDoc(
+                          doc(collection(db, "users"), `${user.userID}`),
+                          {
+                            userEarnedTotal: arrayUnion(
+                              Number(-withdrewPercentage.toFixed(2))
+                            ),
+                            userInvested: arrayUnion(Number(-withdrewPercentage.toFixed(2))),
+                          }
+                        );
+                      });
+                      alert("Success");
+                    } catch (error) {
+                      console.log(error);
+                      alert("Error happened , please try again");
+                    } finally {
+                      setloadingUpdate2(false);
+                    }
                   }
                 }}
               >
