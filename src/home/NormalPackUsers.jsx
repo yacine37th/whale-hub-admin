@@ -57,7 +57,7 @@ function NormalPackUsers() {
       //   console.log(users);
       //   // console.log(userArray.length);
       //   console.log("====================================");
-      //   console.log(total);
+      console.log(userTotalInvested.toFixed(2));
       settotalin(userTotalInvested.toFixed(2));
       // console.log((5 * total) / 100);
     } catch (error) {
@@ -68,7 +68,7 @@ function NormalPackUsers() {
   };
 
   useEffect(() => {
-   getdata();
+    getdata();
   }, []);
   return (
     <>
@@ -93,10 +93,10 @@ function NormalPackUsers() {
               </p>
               <div className="w-1/2 max-md:w-full">
                 <input
-                  type="number"
+                  type="text"
                   onChange={(e) => {
-                    setAmount((e.target.value * totalin) / 100);
-                    setAmount2(e.target.value);
+                    setAmount((Number(e.target.value) * totalin) / 100);
+                    setAmount2(Number(e.target.value));
                   }}
                   className="border p-5 outline-none w-full"
                   placeholder="Percentage% ..."
@@ -153,6 +153,7 @@ function NormalPackUsers() {
                       alert("Error happened , please try again");
                     } finally {
                       setloadingUpdate(false);
+                     
                     }
                   }
                 }}
@@ -187,9 +188,11 @@ function NormalPackUsers() {
              */}
               <div className="w-1/2 max-md:w-full mt-14">
                 <input
-                  type="number"
+                  type="text"
                   onChange={(e) => {
-                    setwithdrewPercentage((e.target.value * totalin) / 100);
+                    setwithdrewPercentage(
+                      (Number(e.target.value) * totalin) / 100
+                    );
                     setwithdrewPercentage2(Number(e.target.value));
                   }}
                   className="border p-5 outline-none w-full"

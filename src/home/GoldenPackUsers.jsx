@@ -91,10 +91,10 @@ function GoldenPackUsers() {
               </p>
               <div className="w-1/2 max-md:w-full">
                 <input
-                  type="number"
+                  type="text"
                   onChange={(e) => {
-                    setAmount((e.target.value * totalin) / 100);
-                    setAmount2(e.target.value);
+                    setAmount((Number(e.target.value) * totalin) / 100);
+                    setAmount2(Number(e.target.value));
                   }}
                   className="border p-5 outline-none w-full"
                   placeholder="Percentage% ..."
@@ -209,9 +209,9 @@ function GoldenPackUsers() {
              */}
               <div className="w-1/2 max-md:w-full mt-14">
                 <input
-                  type="number"
+                  type="text"
                   onChange={(e) => {
-                    setwithdrewPercentage((e.target.value * totalin) / 100);
+                    setwithdrewPercentage((Number(e.target.value) * totalin) / 100);
                     setwithdrewPercentage2(Number(e.target.value));
                   }}
                   className="border p-5 outline-none w-full"

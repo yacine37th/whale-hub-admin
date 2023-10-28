@@ -61,7 +61,7 @@ function GoldPackUsersChosen({
       <p>{user.userID}</p>
       <p>{user.userName}</p>
       <p>{user.userEmail}</p>
-      <p className="font-bold mb-10">Invested: {totalInvested} $</p>
+      <p className="font-bold mb-10">Invested: {totalInvested.toFixed(2)} $</p>
     </div>
   );
 }
