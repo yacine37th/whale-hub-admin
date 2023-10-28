@@ -7,6 +7,11 @@ function GoldPackUsersChosen({
   setselectedUsersToWithdraw,
   selectedUsersToWithdraw,
 }) {
+
+  var totalInvested = 0
+  user.userInvested.forEach(element => {
+    totalInvested +=Number(element)
+  });
   return (
     <div className="m-4 border p-7 w-80 rounded-2xl" key={user.userID}>
       {/* <div className="flex-1 flex justify-end py-4"> */}
@@ -53,11 +58,10 @@ function GoldPackUsersChosen({
           />
         </div>
       </div>
-      {/* </div> */}
       <p>{user.userID}</p>
       <p>{user.userName}</p>
       <p>{user.userEmail}</p>
-      <p className="font-bold mb-10">Invested: {user.userInvested} $</p>
+      <p className="font-bold mb-10">Invested: {totalInvested} $</p>
     </div>
   );
 }

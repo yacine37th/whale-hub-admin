@@ -36,7 +36,7 @@ function NormalPackUsers() {
   const [loadingUpdate2, setloadingUpdate2] = useState(false);
 
   const userArray = [];
-  var total = 0;
+  var userTotalInvested = 0;
 
   const getdata = async () => {
     try {
@@ -46,7 +46,10 @@ function NormalPackUsers() {
         if (!userArray.includes(doc.data())) {
           userArray.push(doc.data());
         }
-        total = total + Number(doc.data().userInvested);
+        doc.data().userInvested.forEach((element) => {
+          userTotalInvested += Number(element);
+        });
+        // total = total + Number(doc.data().userInvested);
       });
       setusers(userArray);
       //   console.log("====================================");
@@ -54,7 +57,7 @@ function NormalPackUsers() {
       //   // console.log(userArray.length);
       //   console.log("====================================");
       //   console.log(total);
-      settotalin(total.toFixed(2));
+      settotalin(userTotalInvested.toFixed(2));
       // console.log((5 * total) / 100);
     } catch (error) {
       console.log(error.message);
@@ -102,40 +105,56 @@ function NormalPackUsers() {
               <button
                 className="w-1/4 max-md:w-1/2 p-4 button-background-register border-white   text-white  text-base
                 rounded-none  hover:border-white bg-blue-900"
-                onClick={() => {
-                  selectedUsers.forEach((user) => {
-                    let profit = (user.userInvested * amount2) / 100;
-                    console.log(profit);
-                  });
-                }}
-                // onClick={async () => {
-                //   if (amount === 0) {
-                //     alert("Please fill the input with a valid Percentage");
-                //   } else {
-                //     try {
-                //       setloadingUpdate(true);
-                //       users.forEach(async (user) => {
-                //                     let profit = (user.userInvested*amount2)/100;
-
-                //         await updateDoc(
-                //           doc(collection(db, "users"), `${user.userID}`),
-                //           {
-                //             userEarnedTotal: arrayUnion(
-                //               Number(profit.toFixed(2))
-                //             ),
-                //             userInvested: arrayUnion(Number(profit.toFixed(2))),
-                //           }
-                //         );
-                //       });
-                //       alert("Success");
-                //     } catch (error) {
-                //       console.log(error);
-                //       alert("Error happened , please try again");
-                //     } finally {
-                //       setloadingUpdate(false);
-                //     }
-                //   }
+                // onClick={() => {
+                //   selectedUsers.forEach((user) => {
+                //     // let profit = (user.userInvested * amount2) / 100;
+                //     // console.log(profit);
+                //     var totalInvested =0;
+                //     user.userInvested.forEach(element => {
+                //       totalInvested+= Number(element)
+                //     });
+                //     console.log((totalInvested * amount2) / 100);
+                //   });
                 // }}
+                onClick={async () => {
+                  if (amount === 0 || selectedUsers.length === 0) {
+                    alert(
+                      "Please fill the input with a valid Percentage and select the users"
+                    );
+                  } else {
+                    try {
+                      setloadingUpdate(true);
+                      selectedUsers.forEach(async (user) => {
+                        var totalInvested = 0;
+                        user.userInvested.forEach((element) => {
+                          totalInvested += Number(element);
+                        });
+                        console.log((totalInvested * amount2) / 100);
+                        await updateDoc(
+                          doc(collection(db, "users"), `${user.userID}`),
+                          {
+                            userEarnedTotal: arrayUnion(
+                              Number(
+                                ((totalInvested * amount2) / 100).toFixed(2)
+                              )
+                            ),
+                            userInvested: arrayUnion(
+                              Number(
+                                ((totalInvested * amount2) / 100).toFixed(2)
+                              )
+                            ),
+                          }
+                        );
+                      });
+                      alert("Success");
+                    } catch (error) {
+                      console.log(error);
+                      alert("Error happened , please try again");
+                    } finally {
+                      setloadingUpdate(false);
+                    }
+                  }
+                }}
               >
                 {loadingUpdate ? (
                   // <div className="flex justify-center items-center h-full">

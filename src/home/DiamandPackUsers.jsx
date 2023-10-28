@@ -30,7 +30,6 @@ function DiamandPackUsers() {
   const [loadingUpdate, setloadingUpdate] = useState(false);
 
   const userArray = [];
-  var total = 0;
   var userTotalInvested = 0;
 
   const getdata = async () => {
@@ -62,7 +61,7 @@ function DiamandPackUsers() {
   };
 
   useEffect(() => {
-    return () => getdata();
+    getdata();
   }, []);
   return (
     <>
@@ -100,10 +99,6 @@ function DiamandPackUsers() {
               <button
                 className="w-1/4 max-md:w-1/2 p-4 button-background-register border-white   text-white  text-base
                   rounded-none  hover:border-white bg-blue-900"
-                // onClick={() => {
-                //   // console.log();
-
-                // }}
                 onClick={async () => {
                   if (amount === 0) {
                     alert("Please fill the input with a valid Percentage");
@@ -111,10 +106,6 @@ function DiamandPackUsers() {
                     try {
                       setloadingUpdate(true);
                       users.forEach(async (user) => {
-                        //   users.forEach((element) => {
-
-                        //   });
-
                         var totalInvest = 0;
                         user.userInvested.forEach((element2) => {
                           totalInvest += element2;
