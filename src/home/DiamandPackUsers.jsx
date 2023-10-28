@@ -31,6 +31,7 @@ function DiamandPackUsers() {
 
   const userArray = [];
   var total = 0;
+  var userTotalInvested = 0;
 
   const getdata = async () => {
     try {
@@ -40,15 +41,18 @@ function DiamandPackUsers() {
         if (!userArray.includes(doc.data())) {
           userArray.push(doc.data());
         }
-        total = total + Number(doc.data().userInvested);
+        doc.data().userInvested.forEach(element => {
+          userTotalInvested += Number(element)
+        });
+        console.log(userTotalInvested);
+        // total = total + userTotalInvested;
       });
       setusers(userArray);
       //   console.log("====================================");
       //   console.log(users);
       //   // console.log(userArray.length);
       //   console.log("====================================");
-      //   console.log(total);
-      settotalin(total.toFixed(2));
+      settotalin(userTotalInvested.toFixed(2));
       // console.log((5 * total) / 100);
     } catch (error) {
       console.log(error.message);
@@ -58,7 +62,7 @@ function DiamandPackUsers() {
   };
 
   useEffect(() => {
-    getdata();
+   return ()=> getdata();
   }, []);
   return (
     <>

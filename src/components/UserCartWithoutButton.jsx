@@ -5,6 +5,10 @@ import LoadingSpinner from "./LoadingSpinner";
 
 function UserCartWithoutButton({ user }) {
   const [loadingUpdate, setloadingUpdate] = useState(false);
+  var totalInvested = 0
+  user.userInvested.forEach(element => {
+    totalInvested +=Number(element)
+  });
 
   return (
     <div
@@ -15,7 +19,7 @@ function UserCartWithoutButton({ user }) {
     <p>{user.userName}</p>
     <p>{user.userEmail}</p>
     <p className="font-bold mb-10">
-      Invested: {user.userInvested} $
+      Invested: {totalInvested} $
     </p>
     {/* <button
       className="w-full p-4 button-background-register border-white   text-white  text-base
