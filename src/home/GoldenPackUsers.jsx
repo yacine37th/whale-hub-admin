@@ -66,7 +66,7 @@ function GoldenPackUsers() {
   };
 
   useEffect(() => {
-    return () => getdata();
+    getdata();
   }, []);
   return (
     <>
