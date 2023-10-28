@@ -19,6 +19,7 @@ function DiamandPackUsers() {
   const [loading, setloading] = useState(false);
   const [search, setsearch] = useState("");
   const [amount, setAmount] = useState(0);
+  const [amount2, setAmount2] = useState(0);
 
   const [totalin, settotalin] = useState(0);
   const q = query(
@@ -83,7 +84,10 @@ function DiamandPackUsers() {
               <div className="w-1/2 max-md:w-full">
                 <input
                   type="number"
-                  onChange={(e) => setAmount((e.target.value * totalin) / 100)}
+                  onChange={(e) => {
+                    setAmount((e.target.value * totalin) / 100);
+                    setAmount2(Number(e.target.value));
+                  }}
                   className="border p-5 outline-none w-full"
                   placeholder="Percentage% ..."
                 />
@@ -92,32 +96,32 @@ function DiamandPackUsers() {
               <button
                 className="w-1/4 max-md:w-1/2 p-4 button-background-register border-white   text-white  text-base
                   rounded-none  hover:border-white bg-blue-900"
-                onClick={async () => {
-                  if (amount === 0) {
-                    alert("Please fill the input with a valid Percentage");
-                  } else {
-                    try {
-                      setloadingUpdate(true);
-                      users.forEach(async (user) => {
-                        await updateDoc(
-                          doc(collection(db, "users"), `${user.userID}`),
-                          {
-                            userEarnedTotal: arrayUnion(
-                              Number(amount.toFixed(2))
-                            ),
-                            userInvested: arrayUnion(Number(amount.toFixed(2))),
-                          }
-                        );
-                      });
-                      alert("Success");
-                    } catch (error) {
-                      console.log(error);
-                      alert("Error happened , please try again");
-                    } finally {
-                      setloadingUpdate(false);
-                    }
-                  }
-                }}
+                // onClick={async () => {
+                //   if (amount === 0) {
+                //     alert("Please fill the input with a valid Percentage");
+                //   } else {
+                //     try {
+                //       setloadingUpdate(true);
+                //       users.forEach(async (user) => {
+                //         await updateDoc(
+                //           doc(collection(db, "users"), `${user.userID}`),
+                //           {
+                //             userEarnedTotal: arrayUnion(
+                //               Number(amount.toFixed(2))
+                //             ),
+                //             userInvested: arrayUnion(Number(amount.toFixed(2))),
+                //           }
+                //         );
+                //       });
+                //       alert("Success");
+                //     } catch (error) {
+                //       console.log(error);
+                //       alert("Error happened , please try again");
+                //     } finally {
+                //       setloadingUpdate(false);
+                //     }
+                //   }
+                // }}
                 // onClick={() => {
                 //   if (amount === 0 || selectedUsers.length === 0) {
                 //     alert("select")
