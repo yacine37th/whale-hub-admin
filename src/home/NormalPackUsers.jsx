@@ -178,40 +178,46 @@ function NormalPackUsers() {
               <button
                 className="w-1/4 max-md:w-1/2 p-4 button-background-register border-white   text-white  text-base
                   rounded-none  hover:border-white bg-blue-900"
-                onClick={async () => {
-                  if (
-                    withdrewPercentage === 0 ||
-                    selectedUsersToWithdraw.length === 0
-                  ) {
-                    alert(
-                      "Please fill the input with a valid Percentage and select the users"
-                    );
-                  } else {
-                    console.log(selectedUsersToWithdraw);
-                    try {
-                      setloadingUpdate2(true);
-                      selectedUsersToWithdraw.forEach(async (user) => {
-                        await updateDoc(
-                          doc(collection(db, "users"), `${user.userID}`),
-                          {
-                            userEarnedTotal: arrayUnion(
-                              Number(-withdrewPercentage.toFixed(2))
-                            ),
-                            userInvested: arrayUnion(
-                              Number(-withdrewPercentage.toFixed(2))
-                            ),
-                          }
-                        );
-                      });
-                      alert("Success");
-                    } catch (error) {
-                      console.log(error);
-                      alert("Error happened , please try again");
-                    } finally {
-                      setloadingUpdate2(false);
-                    }
-                  }
-                }}
+                  onClick={()=>{
+                    selectedUsersToWithdraw.forEach((user) => {
+                      let profit = (user.userInvested * amount2) / 100;
+                      console.log(profit);
+                    });
+                  }}
+                // onClick={async () => {
+                //   if (
+                //     withdrewPercentage === 0 ||
+                //     selectedUsersToWithdraw.length === 0
+                //   ) {
+                //     alert(
+                //       "Please fill the input with a valid Percentage and select the users"
+                //     );
+                //   } else {
+                //     console.log(selectedUsersToWithdraw);
+                //     try {
+                //       setloadingUpdate2(true);
+                //       selectedUsersToWithdraw.forEach(async (user) => {
+                //         await updateDoc(
+                //           doc(collection(db, "users"), `${user.userID}`),
+                //           {
+                //             userEarnedTotal: arrayUnion(
+                //               Number(-withdrewPercentage.toFixed(2))
+                //             ),
+                //             userInvested: arrayUnion(
+                //               Number(-withdrewPercentage.toFixed(2))
+                //             ),
+                //           }
+                //         );
+                //       });
+                //       alert("Success");
+                //     } catch (error) {
+                //       console.log(error);
+                //       alert("Error happened , please try again");
+                //     } finally {
+                //       setloadingUpdate2(false);
+                //     }
+                //   }
+                // }}
                 // onClick={() => {
                 //   console.log();
                 // }}
