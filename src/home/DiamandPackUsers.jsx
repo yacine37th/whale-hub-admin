@@ -86,9 +86,9 @@ function DiamandPackUsers() {
               </p>
               <div className="w-1/2 max-md:w-full">
                 <input
-                  type="number"
+                  type="text"
                   onChange={(e) => {
-                    setAmount((e.target.value * totalin) / 100);
+                    setAmount((Number(e.target.value) * totalin) / 100);
                     setAmount2(Number(e.target.value));
                   }}
                   className="border p-5 outline-none w-full"
