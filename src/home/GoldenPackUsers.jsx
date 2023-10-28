@@ -92,7 +92,7 @@ function GoldenPackUsers() {
                 <input
                   type="number"
                   onChange={(e) => {
-                    setAmount((e.target.value * totalin) / 100);
+                    setAmount((e.target.value*totalin)/100);
                     setAmount2(e.target.value);
                   }}
                   className="border p-5 outline-none w-full"
@@ -105,7 +105,7 @@ function GoldenPackUsers() {
                   rounded-none  hover:border-white bg-blue-900"
                 onClick={() => {
                   selectedUsers.forEach((user) => {
-                    let profit = (user.userInvested * amount2) / 100;
+                    let profit = (user.userInvested*amount2)/100;
                     console.log(profit);
                   });
                 }}

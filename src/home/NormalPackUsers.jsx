@@ -105,7 +105,7 @@ function NormalPackUsers() {
                 rounded-none  hover:border-white bg-blue-900"
                 onClick={() => {
                   selectedUsers.forEach((user) => {
-                    let profit = (user.userInvested * amount2) / 100;
+                    let profit = (user.userInvested*amount2)/100;
                     console.log(profit);
                   });
                 }}
