@@ -68,7 +68,7 @@ function NormalPackUsers() {
   };
 
   useEffect(() => {
-    return () => getdata();
+   getdata();
   }, []);
   return (
     <>
