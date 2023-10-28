@@ -65,7 +65,7 @@ function GoldenPackUsers() {
   };
 
   useEffect(() => {
-    getdata();
+    return () => getdata();
   }, []);
   return (
     <>
@@ -92,7 +92,7 @@ function GoldenPackUsers() {
                 <input
                   type="number"
                   onChange={(e) => {
-                    setAmount((e.target.value*totalin)/100);
+                    setAmount((e.target.value * totalin) / 100);
                     setAmount2(e.target.value);
                   }}
                   className="border p-5 outline-none w-full"
@@ -105,7 +105,7 @@ function GoldenPackUsers() {
                   rounded-none  hover:border-white bg-blue-900"
                 onClick={() => {
                   selectedUsers.forEach((user) => {
-                    let profit = (user.userInvested*amount2)/100;
+                    let profit = (user.userInvested * amount2) / 100;
                     console.log(profit);
                   });
                 }}
@@ -118,13 +118,14 @@ function GoldenPackUsers() {
                 //     try {
                 //       setloadingUpdate(true);
                 //       selectedUsers.forEach(async (user) => {
+                // let profit = (user.userInvested * amount2) / 100;
                 //         await updateDoc(
                 //           doc(collection(db, "users"), `${user.userID}`),
                 //           {
                 //             userEarnedTotal: arrayUnion(
-                //               Number(amount.toFixed(2))
+                //               Number(profit.toFixed(2))
                 //             ),
-                //             userInvested: arrayUnion(Number(amount.toFixed(2))),
+                //             userInvested: arrayUnion(Number(profit.toFixed(2))),
                 //           }
                 //         );
                 //       });
@@ -181,13 +182,14 @@ function GoldenPackUsers() {
               <button
                 className="w-1/4 max-md:w-1/2 p-4 button-background-register border-white   text-white  text-base
                   rounded-none  hover:border-white bg-blue-900"
-                  // withdrewPercentage2
-                  onClick={()=>{
-                    selectedUsersToWithdraw.forEach((user) => {
-                      let profit = (user.userInvested * withdrewPercentage2) / 100;
-                      console.log(profit);  
-                    });
-                  }}
+                // withdrewPercentage2
+                onClick={() => {
+                  selectedUsersToWithdraw.forEach((user) => {
+                    let profit =
+                      (user.userInvested * withdrewPercentage2) / 100;
+                    console.log(profit);
+                  });
+                }}
                 // onClick={async () => {
                 //   if (
                 //     withdrewPercentage === 0 ||
@@ -201,14 +203,16 @@ function GoldenPackUsers() {
                 //     try {
                 //       setloadingUpdate2(true);
                 //       selectedUsersToWithdraw.forEach(async (user) => {
+                // let profit =
+                // (user.userInvested * withdrewPercentage2) / 100;
                 //         await updateDoc(
                 //           doc(collection(db, "users"), `${user.userID}`),
                 //           {
                 //             userEarnedTotal: arrayUnion(
-                //               Number(-withdrewPercentage.toFixed(2))
+                //               Number(-profit.toFixed(2))
                 //             ),
                 //             userInvested: arrayUnion(
-                //               Number(-withdrewPercentage.toFixed(2))
+                //               Number(-profit.toFixed(2))
                 //             ),
                 //           }
                 //         );
