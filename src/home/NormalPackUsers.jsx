@@ -25,6 +25,7 @@ function NormalPackUsers() {
   const [amount, setAmount] = useState(0);
   const [amount2, setAmount2] = useState(0);
   const [withdrewPercentage, setwithdrewPercentage] = useState(0);
+  const [withdrewPercentage2, setwithdrewPercentage2] = useState(0);
 
   const [totalin, settotalin] = useState(0);
   const q = query(
@@ -187,9 +188,10 @@ function NormalPackUsers() {
               <div className="w-1/2 max-md:w-full mt-14">
                 <input
                   type="number"
-                  onChange={(e) =>
-                    setwithdrewPercentage((e.target.value * totalin) / 100)
-                  }
+                  onChange={(e) => {
+                    setwithdrewPercentage((e.target.value * totalin) / 100);
+                    setwithdrewPercentage2(Number(e.target.value));
+                  }}
                   className="border p-5 outline-none w-full"
                   placeholder="Percentage WITHDREW ..."
                 />
@@ -198,48 +200,59 @@ function NormalPackUsers() {
               <button
                 className="w-1/4 max-md:w-1/2 p-4 button-background-register border-white   text-white  text-base
                   rounded-none  hover:border-white bg-blue-900"
-                onClick={() => {
-                  selectedUsersToWithdraw.forEach((user) => {
-                    let profit = (user.userInvested * amount2) / 100;
-                    console.log(profit);
-                  });
-                }}
-                // onClick={async () => {
-                //   if (
-                //     withdrewPercentage === 0 ||
-                //     selectedUsersToWithdraw.length === 0
-                //   ) {
-                //     alert(
-                //       "Please fill the input with a valid Percentage and select the users"
-                //     );
-                //   } else {
-                //     console.log(selectedUsersToWithdraw);
-                //     try {
-                //       setloadingUpdate2(true);
-                //       selectedUsersToWithdraw.forEach(async (user) => {
-                // let profit = (user.userInvested * amount2) / 100;
+                // onClick={() => {
+                //   selectedUsersToWithdraw.forEach((user) => {
 
-                //         await updateDoc(
-                //           doc(collection(db, "users"), `${user.userID}`),
-                //           {
-                //             userEarnedTotal: arrayUnion(
-                //               Number(-proft.toFixed(2))
-                //             ),
-                //             userInvested: arrayUnion(
-                //               Number(-profit.toFixed(2))
-                //             ),
-                //           }
-                //         );
-                //       });
-                //       alert("Success");
-                //     } catch (error) {
-                //       console.log(error);
-                //       alert("Error happened , please try again");
-                //     } finally {
-                //       setloadingUpdate2(false);
-                //     }
-                //   }
+                //   });
                 // }}
+                onClick={async () => {
+                  if (
+                    withdrewPercentage === 0 ||
+                    selectedUsersToWithdraw.length === 0
+                  ) {
+                    alert(
+                      "Please fill the input with a valid Percentage and select the users"
+                    );
+                  } else {
+                    console.log(selectedUsersToWithdraw);
+                    try {
+                      setloadingUpdate2(true);
+                      selectedUsersToWithdraw.forEach(async (user) => {
+                        var totalInvested = 0;
+                        user.userInvested.forEach((element) => {
+                          totalInvested += Number(element);
+                        });
+                        await updateDoc(
+                          doc(collection(db, "users"), `${user.userID}`),
+                          {
+                            userEarnedTotal: arrayUnion(
+                              Number(
+                                -(
+                                  (totalInvested * withdrewPercentage2) /
+                                  100
+                                ).toFixed(2)
+                              )
+                            ),
+                            userInvested: arrayUnion(
+                              Number(
+                                -(
+                                  (totalInvested * withdrewPercentage2) /
+                                  100
+                                ).toFixed(2)
+                              )
+                            ),
+                          }
+                        );
+                      });
+                      alert("Success");
+                    } catch (error) {
+                      console.log(error);
+                      alert("Error happened , please try again");
+                    } finally {
+                      setloadingUpdate2(false);
+                    }
+                  }
+                }}
                 // onClick={() => {
                 //   console.log();
                 // }}
