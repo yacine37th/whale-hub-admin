@@ -110,13 +110,6 @@ function HomeNavBar() {
               </p>
             )}
           </NavLink>
-
-
-        
-
-
-
-          
         </div>
         <Navbar />
       </div>

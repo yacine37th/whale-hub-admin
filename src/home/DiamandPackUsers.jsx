@@ -44,15 +44,9 @@ function DiamandPackUsers() {
           userTotalInvested += Number(element);
         });
         console.log(userTotalInvested);
-        // total = total + userTotalInvested;
       });
       setusers(userArray);
-      //   console.log("====================================");
-      //   console.log(users);
-      //   // console.log(userArray.length);
-      //   console.log("====================================");
       settotalin(userTotalInvested.toFixed(2));
-      // console.log((5 * total) / 100);
     } catch (error) {
       console.log(error.message);
     } finally {
@@ -131,25 +125,9 @@ function DiamandPackUsers() {
                     }
                   }
                 }}
-                // onClick={() => {
-                //   if (amount === 0 || selectedUsers.length === 0) {
-                //     alert("select");
-                //   } else {
-                //     console.log(selectedUsers);
-                //   }
-                // }}
               >
                 {loadingUpdate ? (
-                  // <div className="flex justify-center items-center h-full">
-                  //   <img src={spinner} alt="" className="w-14" />
-                  // </div>
-                  <div
-                  // className="flex justify-center items-center   h-screen p-0
-                  // "
-                  >
-                    {/* <div class=" flex justify-center items-center">
-                      <div class="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-900"></div>
-                    </div> */}
+                  <div>
                     <LoadingSpinner
                       width={"w-5"}
                       height={"h-5"}

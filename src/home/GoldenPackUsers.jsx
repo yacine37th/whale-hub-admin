@@ -50,13 +50,10 @@ function GoldenPackUsers() {
         }
         doc.data().userInvested.forEach((element) => {
           userTotalInvested += Number(element);
-        });      });
+        });
+      });
       setusers(userArray);
-      //   console.log("====================================");
-      //   console.log(users);
-      //   // console.log(userArray.length);
-      //   console.log("====================================");
-      // console.log(userTotalInvested);
+
       settotalin(userTotalInvested.toFixed(2));
     } catch (error) {
       console.log(error.message);
@@ -104,41 +101,6 @@ function GoldenPackUsers() {
               <button
                 className="w-1/4 max-md:w-1/2 p-4 button-background-register border-white   text-white  text-base
                   rounded-none  hover:border-white bg-blue-900"
-                // onClick={() => {
-                //   selectedUsers.forEach((user) => {
-                //     let profit = (user.userInvested * amount2) / 100;
-                //     console.log(profit);
-                //   });
-                // }}
-                // onClick={async () => {
-                //   if (amount === 0 || selectedUsers.length === 0) {
-                //     alert(
-                //       "Please fill the input with a valid Percentage and select the users"
-                //     );
-                //   } else {
-                //     try {
-                //       setloadingUpdate(true);
-                //       selectedUsers.forEach(async (user) => {
-                // let profit = (user.userInvested * amount2) / 100;
-                //         await updateDoc(
-                //           doc(collection(db, "users"), `${user.userID}`),
-                //           {
-                //             userEarnedTotal: arrayUnion(
-                //               Number(profit.toFixed(2))
-                //             ),
-                //             userInvested: arrayUnion(Number(profit.toFixed(2))),
-                //           }
-                //         );
-                //       });
-                //       alert("Success");
-                //     } catch (error) {
-                //       console.log(error);
-                //       alert("Error happened , please try again");
-                //     } finally {
-                //       setloadingUpdate(false);
-                //     }
-                //   }
-                // }}
                 onClick={async () => {
                   if (amount === 0 || selectedUsers.length === 0) {
                     alert(
@@ -180,16 +142,7 @@ function GoldenPackUsers() {
                 }}
               >
                 {loadingUpdate ? (
-                  // <div className="flex justify-center items-center h-full">
-                  //   <img src={spinner} alt="" className="w-14" />
-                  // </div>
-                  <div
-                  // className="flex justify-center items-center   h-screen p-0
-                  // "
-                  >
-                    {/* <div class=" flex justify-center items-center">
-                      <div class="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-900"></div>
-                    </div> */}
+                  <div>
                     <LoadingSpinner
                       width={"w-5"}
                       height={"h-5"}
@@ -211,7 +164,9 @@ function GoldenPackUsers() {
                 <input
                   type="text"
                   onChange={(e) => {
-                    setwithdrewPercentage((Number(e.target.value) * totalin) / 100);
+                    setwithdrewPercentage(
+                      (Number(e.target.value) * totalin) / 100
+                    );
                     setwithdrewPercentage2(Number(e.target.value));
                   }}
                   className="border p-5 outline-none w-full"
@@ -222,14 +177,6 @@ function GoldenPackUsers() {
               <button
                 className="w-1/4 max-md:w-1/2 p-4 button-background-register border-white   text-white  text-base
                   rounded-none  hover:border-white bg-blue-900"
-                // withdrewPercentage2
-                // onClick={() => {
-                //   selectedUsersToWithdraw.forEach((user) => {
-                //     let profit =
-                //       (user.userInvested * withdrewPercentage2) / 100;
-                //     console.log(profit);
-                //   });
-                // }}
                 onClick={async () => {
                   if (
                     withdrewPercentage === 0 ||
@@ -278,42 +225,6 @@ function GoldenPackUsers() {
                     }
                   }
                 }}
-                // onClick={async () => {
-                //   if (
-                //     withdrewPercentage === 0 ||
-                //     selectedUsersToWithdraw.length === 0
-                //   ) {
-                //     alert(
-                //       "Please fill the input with a valid Percentage and select the users"
-                //     );
-                //   } else {
-                //     console.log(selectedUsersToWithdraw);
-                //     try {
-                //       setloadingUpdate2(true);
-                //       selectedUsersToWithdraw.forEach(async (user) => {
-                // let profit =
-                // (user.userInvested * withdrewPercentage2) / 100;
-                //         await updateDoc(
-                //           doc(collection(db, "users"), `${user.userID}`),
-                //           {
-                //             userEarnedTotal: arrayUnion(
-                //               Number(-profit.toFixed(2))
-                //             ),
-                //             userInvested: arrayUnion(
-                //               Number(-profit.toFixed(2))
-                //             ),
-                //           }
-                //         );
-                //       });
-                //       alert("Success");
-                //     } catch (error) {
-                //       console.log(error);
-                //       alert("Error happened , please try again");
-                //     } finally {
-                //       setloadingUpdate2(false);
-                //     }
-                //   }
-                // }}
               >
                 {loadingUpdate2 ? (
                   <div>

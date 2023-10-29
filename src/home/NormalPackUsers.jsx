@@ -106,17 +106,6 @@ function NormalPackUsers() {
               <button
                 className="w-1/4 max-md:w-1/2 p-4 button-background-register border-white   text-white  text-base
                 rounded-none  hover:border-white bg-blue-900"
-                // onClick={() => {
-                //   selectedUsers.forEach((user) => {
-                //     // let profit = (user.userInvested * amount2) / 100;
-                //     // console.log(profit);
-                //     var totalInvested =0;
-                //     user.userInvested.forEach(element => {
-                //       totalInvested+= Number(element)
-                //     });
-                //     console.log((totalInvested * amount2) / 100);
-                //   });
-                // }}
                 onClick={async () => {
                   if (amount === 0 || selectedUsers.length === 0) {
                     alert(
@@ -153,22 +142,12 @@ function NormalPackUsers() {
                       alert("Error happened , please try again");
                     } finally {
                       setloadingUpdate(false);
-                     
                     }
                   }
                 }}
               >
                 {loadingUpdate ? (
-                  // <div className="flex justify-center items-center h-full">
-                  //   <img src={spinner} alt="" className="w-14" />
-                  // </div>
-                  <div
-                  // className="flex justify-center items-center   h-screen p-0
-                  // "
-                  >
-                    {/* <div class=" flex justify-center items-center">
-                    <div class="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-900"></div>
-                  </div> */}
+                  <div>
                     <LoadingSpinner
                       width={"w-5"}
                       height={"h-5"}
@@ -203,11 +182,6 @@ function NormalPackUsers() {
               <button
                 className="w-1/4 max-md:w-1/2 p-4 button-background-register border-white   text-white  text-base
                   rounded-none  hover:border-white bg-blue-900"
-                // onClick={() => {
-                //   selectedUsersToWithdraw.forEach((user) => {
-
-                //   });
-                // }}
                 onClick={async () => {
                   if (
                     withdrewPercentage === 0 ||
@@ -256,9 +230,6 @@ function NormalPackUsers() {
                     }
                   }
                 }}
-                // onClick={() => {
-                //   console.log();
-                // }}
               >
                 {loadingUpdate2 ? (
                   <div>
@@ -291,7 +262,6 @@ function NormalPackUsers() {
                     }
                   })
                   .map((user) => (
-                    // <UserCartWithoutButton key={user.userID} user={user} />
                     <GoldPackUsersChosen
                       key={user.userID}
                       user={user}

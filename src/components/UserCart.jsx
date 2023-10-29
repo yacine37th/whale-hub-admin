@@ -34,16 +34,7 @@ function UserCart({ user, users, setusers }) {
         }}
       >
         {loadingUpdate ? (
-          // <div className="flex justify-center items-center h-full">
-          //   <img src={spinner} alt="" className="w-14" />
-          // </div>
-          <div
-          // className="flex justify-center items-center   h-screen p-0
-          // "
-          >
-            {/* <div class=" flex justify-center items-center">
-              <div class="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-900"></div>
-            </div> */}
+          <div>
             <LoadingSpinner width={"w-5"} height={"h-5"} text={"Loading ..."} />
           </div>
         ) : (

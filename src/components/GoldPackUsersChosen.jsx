@@ -14,7 +14,6 @@ function GoldPackUsersChosen({
   });
   return (
     <div className="m-4 border p-7 w-80 rounded-2xl" key={user.userID}>
-      {/* <div className="flex-1 flex justify-end py-4"> */}
       <div className="flex items-center justify-between mb-4  flex-1">
         <div className="flex flex-col items-center">
           <label htmlFor="default-checkbox" className="font-bold">
