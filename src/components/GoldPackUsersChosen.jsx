@@ -7,10 +7,9 @@ function GoldPackUsersChosen({
   setselectedUsersToWithdraw,
   selectedUsersToWithdraw,
 }) {
-
-  var totalInvested = 0
-  user.userInvested.forEach(element => {
-    totalInvested +=Number(element)
+  var totalInvested = 0;
+  user.userInvested.forEach((element) => {
+    totalInvested += Number(element);
   });
   return (
     <div className="m-4 border p-7 w-80 rounded-2xl" key={user.userID}>
@@ -50,7 +49,9 @@ function GoldPackUsersChosen({
                 setselectedUsersToWithdraw([...selectedUsersToWithdraw, user]);
               } else {
                 setselectedUsersToWithdraw(
-                  selectedUsersToWithdraw.filter((use) => use.userID !== user.userID)
+                  selectedUsersToWithdraw.filter(
+                    (use) => use.userID !== user.userID
+                  )
                 );
               }
             }}

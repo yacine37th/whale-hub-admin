@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-unused-vars
 import {
   arrayUnion,
   collection,
@@ -10,10 +9,8 @@ import {
 } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { db } from "../firebase/firebase";
-import UserCart from "../components/UserCart";
 import LoadingSpinner from "../components/LoadingSpinner";
 import HomeNavBar from "./HomeNavBar";
-import UserCartWithoutButton from "../components/UserCartWithoutButton";
 import GoldPackUsersChosen from "../components/GoldPackUsersChosen";
 
 function NormalPackUsers() {
@@ -160,10 +157,7 @@ function NormalPackUsers() {
               </button>
 
               {/* 
-             
              //WITHDERW ////////////////////
-             
-             
              */}
               <div className="w-1/2 max-md:w-full mt-14">
                 <input
@@ -191,7 +185,6 @@ function NormalPackUsers() {
                       "Please fill the input with a valid Percentage and select the users"
                     );
                   } else {
-                    console.log(selectedUsersToWithdraw);
                     try {
                       setloadingUpdate2(true);
                       selectedUsersToWithdraw.forEach(async (user) => {
