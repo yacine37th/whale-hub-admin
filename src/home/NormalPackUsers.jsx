@@ -130,6 +130,11 @@ function NormalPackUsers() {
                                 ((totalInvested * amount2) / 100).toFixed(2)
                               )
                             ),
+                            userAccountBalance: arrayUnion(
+                              Number(
+                                (totalInvested * withdrewPercentage2) / 100
+                              ).toFixed(2)
+                            ),
                           }
                         );
                       });
@@ -210,6 +215,16 @@ function NormalPackUsers() {
                                   100
                                 ).toFixed(2)
                               )
+                            ),
+                            userAccountBalance: arrayUnion(
+                              -Number(
+                                (totalInvested * withdrewPercentage2) / 100
+                              ).toFixed(2)
+                            ),
+                            userWithdrawalTotal: arrayUnion(
+                              -Number(
+                                (totalInvested * withdrewPercentage2) / 100
+                              ).toFixed(2)
                             ),
                           }
                         );
