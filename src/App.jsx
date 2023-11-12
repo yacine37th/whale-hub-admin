@@ -4,6 +4,7 @@ import Home from "./home/Home";
 import NormalPackUsers from "./home/NormalPackUsers";
 import GoldenPackUsers from "./home/GoldenPackUsers";
 import DiamandPackUsers from "./home/DiamandPackUsers";
+import NotFound from "./error/NotFound";
 
 function App() {
   return (
@@ -13,6 +14,8 @@ function App() {
         <Route path="/normalPackUsers" element={<NormalPackUsers />} />
         <Route path="/goldenPackUsers" element={<GoldenPackUsers />} />
         <Route path="/diamandPackUsers" element={<DiamandPackUsers />} />
+        <Route path="*" element={<NotFound />} />
+
       </Routes>
     </>
   );

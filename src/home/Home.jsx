@@ -18,7 +18,7 @@ const Home = () => {
   const [search, setsearch] = useState("");
   const q = query(
     collection(db, "users"),
-    where("userIsAccepted", "==", false)
+    where("userIsAccepted", "==", false)  
   );
 
   const userArray = [];
@@ -34,7 +34,7 @@ const Home = () => {
       });
       setusers(userArray);
       console.log("====================================");
-      console.log(users);
+      // console.log(users);
       // console.log(userArray.length);
       console.log("====================================");
     } catch (error) {
