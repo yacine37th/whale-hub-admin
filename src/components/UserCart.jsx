@@ -5,6 +5,10 @@ import LoadingSpinner from "./LoadingSpinner";
 
 function UserCart({ user, users, setusers }) {
   const [loadingUpdate, setloadingUpdate] = useState(false);
+  let total = 0;
+  user.userInvested.forEach((item) => {
+    total += item;
+  });
   return (
     <div className="m-4 border p-7 w-80 rounded-2xl">
       <p>{user.userPack}</p>
@@ -12,8 +16,11 @@ function UserCart({ user, users, setusers }) {
       <p>{user.userEmail}</p>
       <p className="font-bold mb-10">Invested: {user.userInvested} $</p>
       <button
-        className="w-full p-4 button-background-register border-white  text-white  text-base
-    rounded-none hover:border-white bg-blue-900 "
+        disabled={total === 0}
+        className={`
+        ${total === 0 && "bg-red-800"}
+        w-full p-4 button-background-register border-white  text-white  text-base
+        rounded-none hover:border-white bg-blue-900`}
         onClick={async () => {
           try {
             setloadingUpdate(true);
