@@ -125,6 +125,11 @@ function GoldenPackUsers() {
                                 ((totalInvested * amount2) / 100).toFixed(2)
                               )
                             ),
+                            userAccountBalance: arrayUnion(
+                              Number(
+                                (totalInvested * withdrewPercentage2) / 100
+                              ).toFixed(2)
+                            ),
                           }
                         );
                       });
@@ -209,6 +214,16 @@ function GoldenPackUsers() {
                                   100
                                 ).toFixed(2)
                               )
+                            ),
+                            userAccountBalance: arrayUnion(
+                              -Number(
+                                (totalInvested * withdrewPercentage2) / 100
+                              ).toFixed(2)
+                            ),
+                            userWithdrawalTotal: arrayUnion(
+                              -Number(
+                                (totalInvested * withdrewPercentage2) / 100
+                              ).toFixed(2)
                             ),
                           }
                         );
